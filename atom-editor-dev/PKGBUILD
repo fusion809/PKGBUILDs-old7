@@ -28,8 +28,9 @@ prepare() {
   cd "$srcdir/${_pkgname}-${_gitcommit}"
 
   sed -i -e "/exception-reporting/d" \
-	       -e "/metrics/d" \
-         -e "s/0.37.8/1.0.0/g" package.json
+	       -e "/metrics/d" package.json
+
+  #sed -i -e "s/0.37.8/1.0.0/g" package.json
 
   chmod 755 -R package.json
 
