@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-git
 pkgdesc='Visual Studio Code for Linux, Open Source version from git'
-pkgver=1.1.0.insider.r267.gde77d32
+pkgver=1.1.0.insider.r269.g6e2c573
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -16,7 +16,7 @@ source=("git+https://github.com/Microsoft/vscode"
         'product.json')
 sha1sums=('SKIP'
           'de838a1c4e6aa37434792c908e042aab90ac421d'
-          'ffe64521128379790749d7e61ba1eeeb7e732dec')
+          '534ced051ff7b90c3f7bd01396c55e74055d2516')
 
 case "$CARCH" in
     i686)
