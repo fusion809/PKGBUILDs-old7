@@ -13,7 +13,7 @@ provides=('visual-studio-code-git')
 
 source=("git+https://github.com/Microsoft/vscode"
         "${pkgname}.desktop"
-        'product_json.patch')
+        'product.json')
 sha1sums=('SKIP'
           'de838a1c4e6aa37434792c908e042aab90ac421d'
           'ffe64521128379790749d7e61ba1eeeb7e732dec')
@@ -40,6 +40,7 @@ prepare() {
     cd "${srcdir}/vscode"
 
     local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
+    cp $srcdir/product.json .
     sed "s/@commit@/${_commit}/g" -i product.json
 }
 
