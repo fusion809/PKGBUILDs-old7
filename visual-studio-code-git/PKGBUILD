@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-git
 pkgdesc='Visual Studio Code for Linux, Open Source version from git'
-pkgver=1.1.0.insider.r269.g6e2c573
+pkgver=1.1.0.insider.r279.gcd1d4d8
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -42,6 +42,8 @@ prepare() {
     local _commit=$(cd "${srcdir}/vscode" && git rev-parse HEAD)
     cp $srcdir/product.json .
     sed "s/@commit@/${_commit}/g" -i product.json
+    EVER=$(sed -n 's/"electronVersion": "//p' package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')
+    sed -i -e "s/$EVER/0.37.8/g" package.json
 }
 
 build() {
