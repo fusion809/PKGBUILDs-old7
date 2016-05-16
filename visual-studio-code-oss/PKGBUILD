@@ -15,10 +15,12 @@ provides=('vscode-oss')
 
 source=("https://github.com/Microsoft/vscode/archive/${_pkgver}.tar.gz"
         "${pkgname}.desktop"
-        "product.json")
+        "product.json"
+        "code.png")
 sha1sums=('71547fefd1eaf174ca7484c668f2186d906cfb67'
-          '29340e482d9517212c31fa2d33b630ca32fc4d3e'
-          'e03a28a10d97476a8697327ae58891cde611f280')
+          '95fa4e8ca74f0099b56919a5e1c8718f9cf7e93c'
+          'e03a28a10d97476a8697327ae58891cde611f280'
+          '6273c7a03221f2dea7f92604b483da4d70b2a62b')
 
 case "$CARCH" in
     i686)
@@ -53,6 +55,9 @@ package() {
     # Include symlink in system bin directory
     install -m 0755 -d "${pkgdir}/usr/bin"
     ln -s '/opt/VSCode-OSS/code-oss' "${pkgdir}/usr/bin/${pkgname}"
+
+    # Get better icon
+    install -Dm644 "$srcdir/code.png" "$pkgdir/opt/VSCode-OSS/resources/app/resources/linux/code.png"
 
     # Add .desktop file
     install -D -m644 "${srcdir}/${pkgname}.desktop" \

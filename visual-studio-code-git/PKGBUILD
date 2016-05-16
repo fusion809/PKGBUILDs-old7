@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-git
 pkgdesc='Visual Studio Code for Linux, Open Source version from git'
-pkgver=1.1.0.insider.r279.gcd1d4d8
+pkgver=1.1.0.insider.r329.ge9ef53f
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -13,7 +13,8 @@ provides=('visual-studio-code-git')
 
 source=("git+https://github.com/Microsoft/vscode"
         "${pkgname}.desktop"
-        'product.json')
+        'product.json'
+        "code.png")
 sha1sums=('SKIP'
           'de838a1c4e6aa37434792c908e042aab90ac421d'
           '534ced051ff7b90c3f7bd01396c55e74055d2516')
@@ -56,6 +57,9 @@ build() {
 package() {
     install -m 0755 -d "${pkgdir}/opt/VSCode-git"
     cp -r "${srcdir}/VSCode-linux-${_vscode_arch}"/* "${pkgdir}/opt/VSCode-git"
+
+    # Get the better icon
+    install -Dm644 "$srcdir/code.png" "$pkgdir/opt/VSCode-git/resources/app/resources/linux/code.png"
 
     # Include symlink in system bin directory
     install -m 0755 -d "${pkgdir}/usr/bin"
