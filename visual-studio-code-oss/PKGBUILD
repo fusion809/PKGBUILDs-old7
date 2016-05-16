@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-_pkgver=1.1.0-insider
+_pkgver=1.1.1
 pkgver=$(echo $_pkgver | sed 's/-/./g')
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('vscode-oss')
 source=("https://github.com/Microsoft/vscode/archive/${_pkgver}.tar.gz"
         "${pkgname}.desktop"
         "product.json")
-sha1sums=('0d717f047b37087c86dab45428c38213c6ba9cf3'
+sha1sums=('71547fefd1eaf174ca7484c668f2186d906cfb67'
           '29340e482d9517212c31fa2d33b630ca32fc4d3e'
           'e03a28a10d97476a8697327ae58891cde611f280')
 
